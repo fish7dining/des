@@ -102,6 +102,26 @@ class des:
             for k in range(48):
                 tt1.append(ccdd[self.table4[k]-1])
             self._16_KEY48.append(tt1)
+    def generate_16_key_2(self):
+        temp1 = self.KEY56
+        temp1.reverse()
+        c = temp1[:28]
+        d = temp1[28:]
+        self._16_KEY48_2 = []
+        for i in range(16):
+            w1 = self.table3[i]
+            cc = c[28 - w1:]
+            for j in range(0, 28 - w1):
+                cc.append(c[j])
+            dd = d[28 - w1:]
+            for j in range(0, 28 - w1):
+                dd.append(d[j])
+            ccdd = cc + dd
+            ccdd.reverse()
+            tt1 = []
+            for k in range(48):
+                tt1.append(ccdd[self.table4[k]-1])
+            self._16_KEY48_2.append(tt1)
     def xor(self, a, b, base):
         t = []
         for i in range(base):
@@ -136,21 +156,59 @@ class des:
             for i in range(64):
                 t1.append(LR[self.table8[i]-1])
             self.LAST_DATA64.append(t1)
+    def mainProcess2(self):
+        self.LAST_DATA64_2 = []
+        for LR in self.LAST_DATA64:
+            for cn in range(15,-1,-1):
+                t1 = []
+                for i in range(48):
+                    t1.append(LR[self.table5[i]-1])
+                en_data = self.xor(t1, self._16_KEY48_2[cn], 48)
+                en_data.reverse()
+                en_data2 = []
+                t2 = 0
+                for i in range(8):
+                    row = en_data[0] * 2 + en_data[5]
+                    col = en_data[1] * 8 + en_data[2] * 4 + en_data[3] * 2 + en_data[4]
+                    xx = self.table6[t2][row][col]
+                    en_data2 += self.int2bin(xx, 4)
+                    t2 += 1
+                    en_data = en_data[6:]
+                en_data2.reverse()
+                s1 = []
+                for i in range(32):
+                    s1.append(en_data2[self.table7[i]-1])
+                R = self.xor(LR[32:], s1, 32)
+                L = LR[:32]
+                LR = R + L
+            t1 = []
+            for i in range(64):
+                t1.append(LR[self.table8[i]-1])
+            self.LAST_DATA64_2.append(t1)
     def Output(self):
-        ss = ''
         for i in self.LAST_DATA64:
             x = 0
             for j in range(64):
                 x <<= 1
                 x += i[j]
             print x
-    def test1(self):
+    def Output2(self):
+        for i in self.LAST_DATA64_2:
+            print i
+    def encryption(self, DataValue, KeyValue):
+        self.Input(DataValue, KeyValue)
         self.generate_key()
         self.generate_16_key()
         self.mainProcess()
         self.Output()
-
+    def decryption(self, ):
+        for i in self.DATA64:
+            print i
+        print ''
+        self.generate_16_key_2()
+        self.mainProcess2()
+        self.Output2()
 
 test1 = des()
-test1.Input('HelloWorld', 'ycl')
-test1.test1()
+test1.encryption('HelloWorld', 'ycl')
+test1.decryption()
