@@ -1,22 +1,5 @@
 
 class des:
-    def int2bin(self, x, base):
-        r1 = []
-        for i in range(base):
-            r1.append(x & 1)
-            x >>= 1
-        return r1
-    def letter2bin(self, x, base):
-        return self.int2bin(ord(x), base)
-    def Input(self, DataValue, KeyValue):
-        self.DATA = []
-        for i in DataValue:
-            self.DATA.append(self.letter2bin(i, 64))
-        temp1 = 0
-        for i in KeyValue:
-            temp1 <<= 8
-            temp1 += ord(i)
-        self.KEY = self.int2bin(temp1, 64)
     def __init__(self):
         self.table1 = [58,50,42,34,26,18,10,2,60,52,44,36,28,20,12,4,
                        62,54,46,38,30,22,14,6,64,56,48,40,32,24,16,8,
@@ -77,11 +60,95 @@ class des:
                         35,3,43,11,51,19,59,27,
                         34,2,42,10,50,18,58,26,
                         33,1,41, 9,49,17,57,25]
-
-
+    def int2bin(self, x, base):
+        r1 = []
+        for i in range(base):
+            r1.append(x & 1)
+            x >>= 1
+        return r1
+    def letter2bin(self, x, base):
+        return self.int2bin(ord(x), base)
+    def Input(self, DataValue, KeyValue):
+        self.DATA64 = []
+        for i in DataValue:
+            self.DATA64.append(self.letter2bin(i, 64))
+        temp1 = 0
+        for i in KeyValue:
+            temp1 <<= 8
+            temp1 += ord(i)
+        self.KEY64 = self.int2bin(temp1, 64)
+    def generate_key(self):
+        temp1 = []
+        for i in range(56):
+            temp1.append(self.KEY64[self.table2[i]-1])
+        self.KEY56 = temp1
+    def generate_16_key(self):
+        temp1 = self.KEY56
+        temp1.reverse()
+        c = temp1[:28]
+        d = temp1[28:]
+        self._16_KEY48 = []
+        for i in range(16):
+            w1 = self.table3[i]
+            cc = c[w1:]
+            for j in range(w1):
+                cc.append(c[j])
+            dd = d[w1:]
+            for j in range(w1):
+                dd.append(d[j])
+            ccdd = cc + dd
+            ccdd.reverse()
+            tt1 = []
+            for k in range(48):
+                tt1.append(ccdd[self.table4[k]-1])
+            self._16_KEY48.append(tt1)
+    def xor(self, a, b, base):
+        t = []
+        for i in range(base):
+            t.append(a[i]^b[i])
+        return t
+    def mainProcess(self):
+        self.LAST_DATA64 = []
+        for LR in self.DATA64:
+            for cn in range(16):
+                t1 = []
+                for i in range(48):
+                    t1.append(LR[self.table5[i]-1])
+                en_data = self.xor(t1, self._16_KEY48[cn], 48)
+                en_data.reverse()
+                en_data2 = []
+                t2 = 0
+                for i in range(8):
+                    row = en_data[0] * 2 + en_data[5]
+                    col = en_data[1] * 8 + en_data[2] * 4 + en_data[3] * 2 + en_data[4]
+                    xx = self.table6[t2][row][col]
+                    en_data2 += self.int2bin(xx, 4)
+                    t2 += 1
+                    en_data = en_data[6:]
+                en_data2.reverse()
+                s1 = []
+                for i in range(32):
+                    s1.append(en_data2[self.table7[i]-1])
+                R = self.xor(LR[32:], s1, 32)
+                L = LR[:32]
+                LR = R + L
+            t1 = []
+            for i in range(64):
+                t1.append(LR[self.table8[i]-1])
+            self.LAST_DATA64.append(t1)
+    def Output(self):
+        ss = ''
+        for i in self.LAST_DATA64:
+            x = 0
+            for j in range(64):
+                x <<= 1
+                x += i[j]
+            print x
     def test1(self):
-        a = self.int2bin(7, 5)
-        print len(self.DATA), self.DATA[1]
+        self.generate_key()
+        self.generate_16_key()
+        self.mainProcess()
+        self.Output()
 
 
 test1 = des()

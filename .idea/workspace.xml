@@ -24,12 +24,17 @@
       <file leaf-file-name="des1.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/des1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5834446">
-              <caret line="88" column="13" selection-start-line="88" selection-start-column="13" selection-end-line="88" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.6595461">
+              <caret line="154" column="30" selection-start-line="154" selection-start-column="30" selection-end-line="154" selection-end-column="30" />
               <folding>
-                <element signature="e#52#156#0" expanded="false" />
-                <element signature="e#200#233#0" expanded="false" />
-                <element signature="e#552#4203#0" expanded="false" />
+                <element signature="e#44#3695#0" expanded="false" />
+                <element signature="e#3736#3840#0" expanded="false" />
+                <element signature="e#3884#3917#0" expanded="false" />
+                <element signature="e#3968#4209#0" expanded="false" />
+                <element signature="e#4246#4366#0" expanded="false" />
+                <element signature="e#4406#4955#0" expanded="false" />
+                <element signature="e#4995#5080#0" expanded="false" />
+                <element signature="e#5116#6207#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -297,7 +302,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17758985" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17758985" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -315,18 +320,25 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/des1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5834446">
-          <caret line="88" column="13" selection-start-line="88" selection-start-column="13" selection-end-line="88" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.6595461">
+          <caret line="154" column="30" selection-start-line="154" selection-start-column="30" selection-end-line="154" selection-end-column="30" />
           <folding>
-            <element signature="e#52#156#0" expanded="false" />
-            <element signature="e#200#233#0" expanded="false" />
-            <element signature="e#552#4203#0" expanded="false" />
+            <element signature="e#44#3695#0" expanded="false" />
+            <element signature="e#3736#3840#0" expanded="false" />
+            <element signature="e#3884#3917#0" expanded="false" />
+            <element signature="e#3968#4209#0" expanded="false" />
+            <element signature="e#4246#4366#0" expanded="false" />
+            <element signature="e#4406#4955#0" expanded="false" />
+            <element signature="e#4995#5080#0" expanded="false" />
+            <element signature="e#5116#6207#0" expanded="false" />
           </folding>
         </state>
       </provider>
